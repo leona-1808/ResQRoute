@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency Route AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div>
+                <h1>🚑 Emergency Route AI</h1>
+                <p class="subtitle">AI-Based Dynamic Emergency Route &amp; Green Corridor Optimization</p>
+            </div>
+            <button id="themeToggleBtn" class="theme-toggle" title="Toggle dark/light mode">🌙 Dark Mode</button>
+        </div>
+    </div>
+
+    <div class="panel controls-panel">
+        <div class="control-group">
+            <label>📍 Emergency at
+                <select id="emergencyNode">
+                    <option value="A">A — Kakinada Beach Rd</option>
+                    <option value="B">B — Main Road</option>
+                    <option value="C">C — Bhanugudi Jn</option>
+                    <option value="D">D — Suryaraopeta</option>
+                    <option value="E">E — Port Area</option>
+                    <option value="F">F — Jagannaickpur</option>
+                    <option value="G">G — RTC Complex</option>
+                    <option value="H">H — Govt Hospital Area</option>
+                    <option value="I">I — Airport Road</option>
+                </select>
+            </label>
+
+            <label>🕐 Hour
+                <input type="number" id="hourInput" value="9" min="0" max="23" />
+            </label>
+
+            <label>📅 Day
+                <select id="dayInput">
+                    <option>Mon</option><option>Tue</option><option>Wed</option>
+                    <option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option>
+                </select>
+            </label>
+
+            <label>🚧 Jam road
+                <select id="jamRoadSelect">
+                    <option value="R01">R01 (A–B)</option>
+                    <option value="R02">R02 (B–C)</option>
+                    <option value="R03">R03 (D–E)</option>
+                    <option value="R04">R04 (E–F)</option>
+                    <option value="R05">R05 (G–H)</option>
+                    <option value="R06">R06 (H–I)</option>
+                    <option value="R07">R07 (A–D)</option>
+                    <option value="R08">R08 (D–G)</option>
+                    <option value="R09">R09 (B–E)</option>
+                    <option value="R10">R10 (E–H)</option>
+                    <option value="R11">R11 (C–F)</option>
+                    <option value="R12">R12 (F–I)</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="button-group">
+            <button id="createEmergencyBtn" class="btn btn-primary">🚑 Create Emergency</button>
+            <button id="simulateJamBtn" class="btn btn-secondary" disabled>🚧 Simulate Traffic Jam</button>
+            <button id="simulateTimeBtn" class="btn btn-secondary" disabled>🕕 Simulate 6 PM Rush</button>
+            <button id="jamCurrentRouteBtn" class="btn btn-alert" disabled>🔁 Jam Current Route</button>
+        </div>
+    </div>
+
+    <div id="status" class="panel status-panel status-idle">
+        Waiting for an emergency to be created…
+    </div>
+
+    <div class="panel map-panel">
+        <div id="map"></div>
+    </div>
+
+    <div id="greenCorridor" class="panel corridor-panel"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
+</body>
+</html>

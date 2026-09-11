@@ -1,0 +1,4 @@
+hospital_id,name,node_location,capacity_beds
+H1,City Care Hospital (Prototype),C,120
+H2,Sunrise Multispecialty (Prototype),G,80
+H3,Coastal Emergency Center (Prototype),I,60

@@ -1,0 +1,13 @@
+road_id,node_from,node_to,base_distance_km
+R01,A,B,2.5
+R02,B,C,2.0
+R03,D,E,2.2
+R04,E,F,2.6
+R05,G,H,2.1
+R06,H,I,2.4
+R07,A,D,2.3
+R08,D,G,2.0
+R09,B,E,2.4
+R10,E,H,2.2
+R11,C,F,2.1
+R12,F,I,2.3

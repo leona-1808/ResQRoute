@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f6f8;
+    --text: #263238;
+    --text-muted: #64748b;
+    --panel-bg: #ffffff;
+    --panel-shadow: rgba(30, 41, 59, 0.06);
+    --border: #cbd5e1;
+    --input-bg: #ffffff;
+    --header-title: #1e3a5f;
+
+    --status-idle-text: #64748b;
+    --status-idle-border: #cbd5e1;
+    --status-info-text: #1d4ed8;
+    --status-info-border: #60a5fa;
+    --status-info-bg: #eff6ff;
+    --status-ok-text: #0f766e;
+    --status-ok-border: #14b8a6;
+    --status-ok-bg: #f0fdfa;
+    --status-reroute-text: #92400e;
+    --status-reroute-border: #fbbf24;
+    --status-reroute-bg: #fffbeb;
+
+    --corridor-text: #0f766e;
+    --corridor-border: #14b8a6;
+    --corridor-bg: #f0fdfa;
+}
+
+body.dark-theme {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --panel-bg: #1e293b;
+    --panel-shadow: rgba(0, 0, 0, 0.4);
+    --border: #334155;
+    --input-bg: #0f172a;
+    --header-title: #7dd3fc;
+
+    --status-idle-text: #94a3b8;
+    --status-idle-border: #334155;
+    --status-info-text: #93c5fd;
+    --status-info-border: #3b82f6;
+    --status-info-bg: #1e2a47;
+    --status-ok-text: #5eead4;
+    --status-ok-border: #14b8a6;
+    --status-ok-bg: #10312c;
+    --status-reroute-text: #fbbf24;
+    --status-reroute-border: #f59e0b;
+    --status-reroute-bg: #3a2c0f;
+
+    --corridor-text: #5eead4;
+    --corridor-border: #14b8a6;
+    --corridor-bg: #10312c;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: var(--header-title);
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.theme-toggle {
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.theme-toggle:hover {
+    opacity: 0.85;
+}
+
+.panel {
+    background: var(--panel-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--panel-shadow);
+    padding: 16px 20px;
+    margin: 0 auto 16px;
+    max-width: 1100px;
+    transition: background 0.2s ease;
+}
+
+.controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.control-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.control-group label {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    gap: 4px;
+}
+
+.control-group select,
+.control-group input {
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    min-width: 150px;
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.05s ease, opacity 0.2s ease, background 0.15s ease;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+.btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+
+.btn-secondary {
+    background: #64748b;
+    color: white;
+}
+.btn-secondary:hover:not(:disabled) { background: #475569; }
+
+.btn-alert {
+    background: #0f766e;
+    color: white;
+}
+.btn-alert:hover:not(:disabled) { background: #0d5c56; }
+
+.status-panel {
+    font-size: 15px;
+    font-weight: 600;
+    border-left: 6px solid var(--status-idle-border);
+    color: var(--status-idle-text);
+    transition: all 0.2s ease;
+}
+
+.status-info {
+    color: var(--status-info-text);
+    border-left-color: var(--status-info-border);
+    background: var(--status-info-bg);
+}
+
+.status-ok {
+    color: var(--status-ok-text);
+    border-left-color: var(--status-ok-border);
+    background: var(--status-ok-bg);
+}
+
+.status-reroute {
+    color: var(--status-reroute-text);
+    border-left-color: var(--status-reroute-border);
+    background: var(--status-reroute-bg);
+}
+
+.map-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
+#map {
+    height: 520px;
+    width: 100%;
+}
+
+.corridor-panel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--corridor-text);
+    border-left: 6px solid var(--corridor-border);
+    background: var(--corridor-bg);
+    display: none;
+}
+
+.corridor-panel.visible {
+    display: block;
+}
+
+/* ---- Custom map badge icons (not emoji, always crisp) ---- */
+
+.map-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    border: 2.5px solid white;
+}
+
+.ambulance-badge {
+    background: #dc2626;
+    animation: pulse 1.2s infinite;
+}
+
+.hospital-badge {
+    background: #0f766e;
+    opacity: 0.85;
+    transition: all 0.2s ease;
+}
+
+.hospital-badge.active-hospital {
+    width: 42px;
+    height: 42px;
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.35), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.map-badge svg {
+    width: 60%;
+    height: 60%;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* Node tooltips: always light chip, readable in both themes since it just
+   labels a fixed map point and doesn't need to match the page theme */
+.leaflet-tooltip.node-tooltip {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #94a3b8 !important;
+    border-radius: 6px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 3px 7px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+    opacity: 1 !important;
+}
+
+.leaflet-tooltip.node-tooltip::before {
+    display: none !important;
+}
