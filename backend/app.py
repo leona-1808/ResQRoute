@@ -25,10 +25,15 @@ app = Flask(
     static_folder="../frontend/static",
 )
 
-# SQLite database file lives in backend/database.db
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, 'database.db')}"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+database_url = os.environ.get("DATABASE_URL")
+if database_url:
+    # Render's Postgres URLs start with postgres://, but SQLAlchemy needs postgresql://
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+else:
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, 'database.db')}"
 
 db.init_app(app)
 

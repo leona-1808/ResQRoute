@@ -100,7 +100,7 @@ function drawRoute(routeNodes, color = '#2563eb') {
     currentRouteLine = L.polyline(latlngs, {
         color, weight: 6, opacity: 0.85
     }).addTo(map);
-    map.fitBounds(currentRouteLine.getBounds(), { padding: [60, 60] });
+    map.fitBounds(currentRouteLine.getBounds(), { padding: [60, 60],maxZoom: 10 });
 }
 
 function placeAmbulance(node) {
